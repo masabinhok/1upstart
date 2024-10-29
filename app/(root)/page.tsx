@@ -1,5 +1,7 @@
 import SearchForm from '@/components/SearchForm';
-import StartupCard from '@/components/StartupCard';
+import StartupCard, { StartupCardType } from '@/components/StartupCard';
+import { client } from '@/sanity/lib/client';
+import { STARTUPS_QUERY } from '@/sanity/lib/queries';
 
 export default async function Home({
   searchParams,
@@ -8,21 +10,23 @@ export default async function Home({
 }) {
   const query = (await searchParams).query;
 
-  const posts = [
-    {
-      _createdAt: new Date(),
-      views: 69,
-      author: {
-        _id: 1,
-        name: 'Sabin Shrestha',
-      },
-      _id: 1,
-      description: 'This is a description',
-      image: 'https://picsum.photos/id/237/200/200',
-      category: 'Robots',
-      title: 'We Robots',
-    },
-  ];
+  const posts = await client.fetch(STARTUPS_QUERY);
+
+  // const posts = [
+  //   {
+  //     _createdAt: new Date(),
+  //     views: 69,
+  //     author: {
+  //       _id: 1,
+  //       name: 'Sabin Shrestha',
+  //     },
+  //     _id: 1,
+  //     description: 'We aim to manage street dogs',
+  //     image: 'https://picsum.photos/id/237/200/200',
+  //     category: 'Pet',
+  //     title: 'Stray dogs',
+  //   },
+  // ];
 
   return (
     <>
@@ -44,7 +48,7 @@ export default async function Home({
         <ul className='mt-7 card_grid'>
           {posts?.length > 0 ? (
             posts.map((post: StartupCardType) => (
-              <StartupCard key={post?.id} post={post} />
+              <StartupCard key={post?._id} post={post} />
             ))
           ) : (
             <p className='no-results'>Np Startups found</p>
