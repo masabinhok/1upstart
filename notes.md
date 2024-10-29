@@ -5,6 +5,7 @@ npm i sanity-plugin-markdown
 npx sanity@latest schema extract --path=./sanity/extract.json
 npx sanity@latest typegen generate
 
+
 ## ShadCn
  npx shadcn@latest init                
  npx shadcn@latest add button                               
@@ -18,5 +19,8 @@ npx sanity@latest typegen generate
 ## Next Auth
 npm install next-auth@beta                             
 
-# Next app
-npx create-next-app@latest       
+## Next app
+npx create-next-app@latest    
+
+
+npm i server-only
