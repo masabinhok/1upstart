@@ -33,7 +33,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
             <p className='text-16-medium line-clamp-1'>{author?.name}</p>
           </Link>
           <Link href={`/startup/${_id}`}>
-            <h3 className='text-26-semi-bold line-clamp-1'>{title}</h3>
+            <h3 className='font-semi-bold uppercase line-clamp-1'>{title}</h3>
           </Link>
         </div>
         <Link href={`/user/${author?._id}`}>
@@ -42,7 +42,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
             alt={author?.name as string}
             width={48}
             height={48}
-            className='rounded-full'
+            className='rounded-full w-[48px] h-[48px]'
           />
         </Link>
       </div>
